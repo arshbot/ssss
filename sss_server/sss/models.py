@@ -12,8 +12,10 @@ class BTCtoLN_SwapInvoice(models.Model):
 
     lockduration = models.IntegerField(default=1)
 
+    redeemblock = models.IntegerField(null=True)
+
     # Address that ssss will use to sweep funds from the htlc upon completion
-    final_address = models.CharField(max_length=35, null=True)
+    final_address_pubkey = models.CharField(max_length=35, null=True)
 
     preimage = models.CharField(max_length=500, null=True)
 
