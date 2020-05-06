@@ -9,8 +9,7 @@ export default class InputField extends Component {
     };
   }
 
-  componentDidMount() {
-  }
+  componentDidMount() {}
 
   render() {
     return (

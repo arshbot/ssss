@@ -37,22 +37,33 @@ class App extends Component {
 		}
 		fetch("http://127.0.0.1:8000/api/btclnswap/", requestOptions)
 			.then(response => response.text())
-			.then(result => console.log(result))
+      .then(response => JSON.parse(response))
+			.then(result => { 
+          this.setState({htlc_p2sh: result.htlc_p2sh})
+        }
+      )
 			.catch(error => console.log('error', error));
 	}
 
   render() {
+    console.log(this.state.htlc_p2sh)
     return (
 			<div>
 				<div>
-					<h1> Hello World </h1>
+					<h1> Hello TOOL </h1>
 					<textarea value={ this.state.refund_addr } onChange={this.handleRefundAddrChange.bind(this)}/>
 				</div>
 				<div>
 					<h1> Hello World </h1>
 					<textarea value={ this.state.lightning_invoice } onChange={this.handleLnInvoiceChange.bind(this)}/>
 				</div>
-  			<Button variant="success" onClick={this.handleGenerateHTLCClick.bind(this)}>Genereate HTLC</Button>{' '} </div>
+        <div>
+          <Button variant="success" onClick={this.handleGenerateHTLCClick.bind(this)}>Genereate HTLC</Button>{' '}
+        </div>
+        <div>
+          { this.state.htlc_p2sh ? <label> { this.state.htlc_p2sh } </label> : null }
+        </div>
+      </div>
     );
   }
 }
