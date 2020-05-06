@@ -12,12 +12,28 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
+from lndgrpc import LNDClient
+from bitcoin import rpc
+import bitcoin
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
+
+NETWORK = "testnet"
+
+bitcoin.SelectParams(NETWORK)
+BITCOINRPC = rpc.Proxy()
+
+LNDRPC = LNDClient(
+            "127.0.0.1:10009",
+            network=NETWORK,
+            macaroon_filepath='/home/harshagoli/Limbo/admin.macaroon',
+            cert_filepath='/home/harshagoli/Limbo/tls.cert'
+        )
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '#p&o16c**q2t%x19o$_-cj@wvm6yei$x#=x@ld2&s51zaaxq7_'
@@ -26,6 +42,7 @@ SECRET_KEY = '#p&o16c**q2t%x19o$_-cj@wvm6yei$x#=x@ld2&s51zaaxq7_'
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
 
 
 # Application definition
