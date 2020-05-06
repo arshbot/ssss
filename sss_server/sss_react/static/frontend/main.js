@@ -28810,8 +28810,8 @@ var App = /*#__PURE__*/function (_Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      refund_addr: 'bitcoin addr here',
-      lightning_invoice: 'ln invoice here'
+      refund_addr: '1NiNja1bUmhSoTXozBRBEtR8LeF9TGbZBN',
+      lightning_invoice: 'lntb1500n1p0trcq7pp5h78cqzkdasysywc88y70zk54hr6sr5fphh9uhz6fsg0n26rlwrzsdqh2fjkzep6yppxzapqwdhh2uqcqzpgxqr23ssp5ccp9g66p03jny6vk3qzzthwqd0d4wqlwfsp50g8c8ykfqhm7e50s9qy9qsqep9r0ffppp5075puvr32609zznduh70mfewwkp4c5qd53j7vge0r5gjw8ewd57pdf4mqwdlleafp4v4f7k9mwdzvcwmtz473p9nvvpqpeqjqrc'
     };
     return _this;
   }
@@ -28837,6 +28837,8 @@ var App = /*#__PURE__*/function (_Component) {
   }, {
     key: "handleGenerateHTLCClick",
     value: function handleGenerateHTLCClick(event) {
+      var _this2 = this;
+
       var requestOptions = {
         method: 'POST',
         headers: {
@@ -28849,8 +28851,12 @@ var App = /*#__PURE__*/function (_Component) {
       };
       fetch("http://127.0.0.1:8000/api/btclnswap/", requestOptions).then(function (response) {
         return response.text();
+      }).then(function (response) {
+        return JSON.parse(response);
       }).then(function (result) {
-        return console.log(result);
+        _this2.setState({
+          htlc_p2sh: result.htlc_p2sh
+        });
       }).catch(function (error) {
         return console.log('error', error);
       });
@@ -28858,16 +28864,17 @@ var App = /*#__PURE__*/function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, " Hello World "), /*#__PURE__*/_react.default.createElement("textarea", {
+      console.log(this.state.htlc_p2sh);
+      return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, " Hello TOOL "), /*#__PURE__*/_react.default.createElement("textarea", {
         value: this.state.refund_addr,
         onChange: this.handleRefundAddrChange.bind(this)
       })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, " Hello World "), /*#__PURE__*/_react.default.createElement("textarea", {
         value: this.state.lightning_invoice,
         onChange: this.handleLnInvoiceChange.bind(this)
-      })), /*#__PURE__*/_react.default.createElement(_Button.default, {
+      })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Button.default, {
         variant: "success",
         onClick: this.handleGenerateHTLCClick.bind(this)
-      }, "Genereate HTLC"), ' ', " ");
+      }, "Genereate HTLC"), ' '), /*#__PURE__*/_react.default.createElement("div", null, this.state.htlc_p2sh ? /*#__PURE__*/_react.default.createElement("label", null, " ", this.state.htlc_p2sh, " ") : null));
     }
   }]);
 
@@ -28884,7 +28891,7 @@ var container = document.getElementById("app");
 var _App = _interopRequireDefault(require("./components/App"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./components/App":"components/App.js"}],"../../../../../.nvm/versions/node/v12.16.2/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./components/App":"components/App.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -28912,7 +28919,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46841" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43377" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -29088,5 +29095,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../../../.nvm/versions/node/v12.16.2/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
+},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
 //# sourceMappingURL=/main.js.map
