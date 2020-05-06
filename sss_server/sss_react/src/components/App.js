@@ -8,8 +8,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-			refund_addr: 'bitcoin addr here',
-			lightning_invoice: 'ln invoice here',
+			refund_addr: '1NiNja1bUmhSoTXozBRBEtR8LeF9TGbZBN',
+			lightning_invoice: 'lntb1500n1p0trcq7pp5h78cqzkdasysywc88y70zk54hr6sr5fphh9uhz6fsg0n26rlwrzsdqh2fjkzep6yppxzapqwdhh2uqcqzpgxqr23ssp5ccp9g66p03jny6vk3qzzthwqd0d4wqlwfsp50g8c8ykfqhm7e50s9qy9qsqep9r0ffppp5075puvr32609zznduh70mfewwkp4c5qd53j7vge0r5gjw8ewd57pdf4mqwdlleafp4v4f7k9mwdzvcwmtz473p9nvvpqpeqjqrc',
     };
   }
 

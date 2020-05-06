@@ -8,9 +8,10 @@ class BTCtoLN_InvoiceSerializer(serializers.ModelSerializer):
                 'refund_address',
                 'bolt11_invoice',
                 'lockduration',
-                'final_address',
                 'preimage',
                 'funding_transaction',
                 'redemption_transaction',
                 'htlc_p2sh',
+                'final_address',
         )
+
