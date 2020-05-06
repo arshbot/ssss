@@ -1,6 +1,17 @@
-import uuid
+import uuid, json
 
 from django.db import models
+from django.conf import settings
+
+from google.protobuf.json_format import MessageToJson as to_json
+from bitcoin import rpc
+from bitcoin.core import Hash160
+from bitcoin.core.script import CScript, OP_DUP, OP_IF, OP_ELSE, OP_ENDIF, \
+    OP_HASH160, OP_EQUALVERIFY, OP_CHECKSIG, SignatureHash, SIGHASH_ALL, \
+    OP_DROP, OP_CHECKLOCKTIMEVERIFY, OP_SHA256
+from bitcoin.wallet import P2PKHBitcoinAddress, CBitcoinSecret, CBitcoinAddress
+
+lnd = settings.LNDRPC
 
 class BTCtoLN_SwapInvoice(models.Model):
 
@@ -25,7 +36,50 @@ class BTCtoLN_SwapInvoice(models.Model):
 
     @property
     def htlc_p2sh(self):
-        return "fuck u"
+        # We create connections on the fly because they'll time out quickly if
+        # we don't
+        bitcoind = rpc.Proxy()
+
+        # We can decipher the hash of the preimage without explicitly asking
+        # for it by taking it out of the payment request supplied
+        decoded_pr = json.loads(to_json(
+            lnd.decode_payment_request(self.bolt11_invoice))
+        )
+        hashed_preimage = decoded_pr['payment_hash']
+
+        # Once these assignments are made, we want to lock them in so this
+        # functions generates deterministically
+        if not self.final_address_pubkey:
+            final_address = bitcoind.getnewaddress()
+            seckey = bitcoind.dumpprivkey(final_address)
+            self.final_address_pubkey = seckey.pub.hex()
+
+        if not self.redeemblock:
+            curr_blockheight = bitcoind.getblockcount()
+            self.redeemblock = curr_blockheight + self.lockduration
+
+        # This is the HTLC locking script
+        txin_redeemScript = CScript([
+            OP_IF,
+                OP_SHA256, bytes(hashed_preimage, 'utf8'), OP_EQUALVERIFY,OP_DUP, OP_HASH160,
+                bytes(Hash160(bytes(self.final_address_pubkey, 'utf8'))),
+            OP_ELSE,
+                self.redeemblock, OP_CHECKLOCKTIMEVERIFY, OP_DROP, OP_DUP, OP_HASH160,
+                bytes(Hash160(bytes(self.refund_address, 'utf8'))),
+            OP_ENDIF,
+                OP_EQUALVERIFY, OP_CHECKSIG
+        ])
+
+        self.save()
+
+        # Generate a P2SH address from the locking script
+        txin_scriptPubKey = txin_redeemScript.to_p2sh_scriptPubKey()
+        txin_p2sh_address = CBitcoinAddress.from_scriptPubKey(txin_scriptPubKey)
+        return str(txin_p2sh_address)
+
+    @property
+    def final_address(self):
+        return str(P2PKHBitcoinAddress.from_pubkey(bytes.fromhex(self.final_address_pubkey)))
 
 #     @property
 #     def get_hashed_preimage(self):
