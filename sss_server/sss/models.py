@@ -1,4 +1,6 @@
-import uuid, json
+import uuid
+import json
+from decimal import Decimal
 
 from django.db import models
 from django.conf import settings
@@ -34,8 +36,16 @@ class BTCtoLN_SwapInvoice(models.Model):
 
     redemption_transaction = models.CharField(max_length=1000, null=True)
 
+    is_finalized = models.BooleanField(default=False)
+
     @property
-    def htlc_p2sh(self):
+    def htlc_p2sh_address_balance(self) -> str:
+        """ Lazy loading of live address received balance """
+        bitcoind = rpc.Proxy()
+        return str(Decimal(bitcoind.getreceivedbyaddress(self.htlc_p2sh)) * 10**-8)
+
+    @property
+    def htlc_p2sh(self) -> str:
         # We create connections on the fly because they'll time out quickly if
         # we don't
         bitcoind = rpc.Proxy()
