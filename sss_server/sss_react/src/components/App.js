@@ -50,18 +50,28 @@ class App extends Component {
     return (
 			<div>
 				<div>
-					<h1> Hello TOOL </h1>
+					<h1> Enter Refund address </h1>
 					<textarea value={ this.state.refund_addr } onChange={this.handleRefundAddrChange.bind(this)}/>
 				</div>
 				<div>
-					<h1> Hello World </h1>
+					<h1> Enter Lightning address </h1>
 					<textarea value={ this.state.lightning_invoice } onChange={this.handleLnInvoiceChange.bind(this)}/>
 				</div>
         <div>
           <Button variant="success" onClick={this.handleGenerateHTLCClick.bind(this)}>Genereate HTLC</Button>{' '}
         </div>
         <div>
-          { this.state.htlc_p2sh ? <label> { this.state.htlc_p2sh } </label> : null }
+          { this.state.htlc_p2sh ?
+            <div>
+              <div>
+                 <label> { this.state.htlc_p2sh } </label>
+              </div>
+              <div>
+                <Button> test </Button>
+              </div>
+            </div>
+            : null
+          }
         </div>
       </div>
     );

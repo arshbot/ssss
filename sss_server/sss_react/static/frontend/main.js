@@ -28865,16 +28865,16 @@ var App = /*#__PURE__*/function (_Component) {
     key: "render",
     value: function render() {
       console.log(this.state.htlc_p2sh);
-      return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, " Hello TOOL "), /*#__PURE__*/_react.default.createElement("textarea", {
+      return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, " Enter Refund address "), /*#__PURE__*/_react.default.createElement("textarea", {
         value: this.state.refund_addr,
         onChange: this.handleRefundAddrChange.bind(this)
-      })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, " Hello World "), /*#__PURE__*/_react.default.createElement("textarea", {
+      })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, " Enter Lightning address "), /*#__PURE__*/_react.default.createElement("textarea", {
         value: this.state.lightning_invoice,
         onChange: this.handleLnInvoiceChange.bind(this)
       })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Button.default, {
         variant: "success",
         onClick: this.handleGenerateHTLCClick.bind(this)
-      }, "Genereate HTLC"), ' '), /*#__PURE__*/_react.default.createElement("div", null, this.state.htlc_p2sh ? /*#__PURE__*/_react.default.createElement("label", null, " ", this.state.htlc_p2sh, " ") : null));
+      }, "Genereate HTLC"), ' '), /*#__PURE__*/_react.default.createElement("div", null, this.state.htlc_p2sh ? /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("label", null, " ", this.state.htlc_p2sh, " ")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Button.default, null, " test "))) : null));
     }
   }]);
 
@@ -28919,7 +28919,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43377" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "35829" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
