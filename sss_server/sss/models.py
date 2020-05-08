@@ -68,7 +68,7 @@ class BTCtoLN_SwapInvoice(models.Model):
             curr_blockheight = bitcoind.getblockcount()
             self.redeemblock = curr_blockheight + self.lockduration
 
-        # This is the HTLC locking script
+        # HTLC locking script
         txin_redeemScript = CScript([
             OP_IF,
                 OP_SHA256, bytes(hashed_preimage, 'utf8'), OP_EQUALVERIFY,OP_DUP, OP_HASH160,
@@ -88,9 +88,5 @@ class BTCtoLN_SwapInvoice(models.Model):
         return str(txin_p2sh_address)
 
     @property
-    def final_address(self):
+    def final_address(self) -> str:
         return str(P2PKHBitcoinAddress.from_pubkey(bytes.fromhex(self.final_address_pubkey)))
-
-#     @property
-#     def get_hashed_preimage(self):
-#         pass
