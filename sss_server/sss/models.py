@@ -4,6 +4,7 @@ from decimal import Decimal
 
 from django.db import models
 from django.conf import settings
+from django.utils.timezone import now
 
 from google.protobuf.json_format import MessageToJson as to_json
 from bitcoin import rpc
@@ -36,7 +37,13 @@ class BTCtoLN_SwapInvoice(models.Model):
 
     redemption_transaction = models.CharField(max_length=1000, null=True)
 
+    amount_to_swap = models.IntegerField(null=True)
+
+    is_paid = models.BooleanField(default=False)
+
     is_finalized = models.BooleanField(default=False)
+
+    created_at = models.DateTimeField(default=now)
 
     @property
     def htlc_p2sh_address_balance(self) -> str:
@@ -46,6 +53,7 @@ class BTCtoLN_SwapInvoice(models.Model):
 
     @property
     def htlc_p2sh(self) -> str:
+        # TODO: cache the generated address
         # We create connections on the fly because they'll time out quickly if
         # we don't
         bitcoind = rpc.Proxy()
