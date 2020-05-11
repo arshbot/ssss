@@ -102,10 +102,25 @@ update all this
           value={this.state.lightning_invoice}
           onChange={this.handleLnInvoiceChange}
         />
+        <Divider/>
+        <InputOptionsItem
+          inputName='Type'
+          disable={this.state.disableP2SH}
+          onChange={this.handleTypeSelect}
+          options={[
+            "BIP 199"
+          ]}
+        />
+        <InputOptionsItem
+          inputName='nLockTime'
+          disable={this.state.disableP2SH}
+          onChange={this.handleLockTimeSelect}
+          options={[ ...Array(31).keys() ].slice(1, 31)}
+        />
         <HTLCOutputItem
-          inputName='HTLC P2SH'
+          inputName='Pay to Script Hash'
           value={this.state.htlc_p2sh}
-          disable={this.state.enableP2SH}
+          disable={this.state.disableP2SH}
           onChange={this.handleLnInvoiceChange}
         />
     </div>
