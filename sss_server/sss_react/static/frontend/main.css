@@ -1,0 +1,159 @@
+/* roboto-100normal - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100;
+  src:
+    local('Roboto Thin '),
+    local('Roboto-Thin'),
+    url('/roboto-latin-100.1b0f24a1.woff2') format('woff2'), 
+    url('/roboto-latin-100.72ef3a57.woff') format('woff'); /* Modern Browsers */
+}
+
+/* roboto-100italic - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 100;
+  src:
+    local('Roboto Thin italic'),
+    local('Roboto-Thinitalic'),
+    url('/roboto-latin-100italic.c2aa493b.woff2') format('woff2'), 
+    url('/roboto-latin-100italic.a32f3bab.woff') format('woff'); /* Modern Browsers */
+}
+
+/* roboto-300normal - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300;
+  src:
+    local('Roboto Light '),
+    local('Roboto-Light'),
+    url('/roboto-latin-300.98bd834b.woff2') format('woff2'), 
+    url('/roboto-latin-300.b325a0ce.woff') format('woff'); /* Modern Browsers */
+}
+
+/* roboto-300italic - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 300;
+  src:
+    local('Roboto Light italic'),
+    local('Roboto-Lightitalic'),
+    url('/roboto-latin-300italic.1133cdc4.woff2') format('woff2'), 
+    url('/roboto-latin-300italic.212e4d7c.woff') format('woff'); /* Modern Browsers */
+}
+
+/* roboto-400normal - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src:
+    local('Roboto Regular '),
+    local('Roboto-Regular'),
+    url('/roboto-latin-400.fdf5b386.woff2') format('woff2'), 
+    url('/roboto-latin-400.b5c7adb0.woff') format('woff'); /* Modern Browsers */
+}
+
+/* roboto-400italic - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 400;
+  src:
+    local('Roboto Regular italic'),
+    local('Roboto-Regularitalic'),
+    url('/roboto-latin-400italic.21930fa6.woff2') format('woff2'), 
+    url('/roboto-latin-400italic.3ac83c2c.woff') format('woff'); /* Modern Browsers */
+}
+
+/* roboto-500normal - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src:
+    local('Roboto Medium '),
+    local('Roboto-Medium'),
+    url('/roboto-latin-500.43822231.woff2') format('woff2'), 
+    url('/roboto-latin-500.cea1e1a6.woff') format('woff'); /* Modern Browsers */
+}
+
+/* roboto-500italic - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 500;
+  src:
+    local('Roboto Medium italic'),
+    local('Roboto-Mediumitalic'),
+    url('/roboto-latin-500italic.2633889a.woff2') format('woff2'), 
+    url('/roboto-latin-500italic.df940655.woff') format('woff'); /* Modern Browsers */
+}
+
+/* roboto-700normal - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src:
+    local('Roboto Bold '),
+    local('Roboto-Bold'),
+    url('/roboto-latin-700.6f4f7054.woff2') format('woff2'), 
+    url('/roboto-latin-700.851d1064.woff') format('woff'); /* Modern Browsers */
+}
+
+/* roboto-700italic - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 700;
+  src:
+    local('Roboto Bold italic'),
+    local('Roboto-Bolditalic'),
+    url('/roboto-latin-700italic.98d04b04.woff2') format('woff2'), 
+    url('/roboto-latin-700italic.b0813ff5.woff') format('woff'); /* Modern Browsers */
+}
+
+/* roboto-900normal - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 900;
+  src:
+    local('Roboto Black '),
+    local('Roboto-Black'),
+    url('/roboto-latin-900.25e35df1.woff2') format('woff2'), 
+    url('/roboto-latin-900.be617765.woff') format('woff'); /* Modern Browsers */
+}
+
+/* roboto-900italic - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 900;
+  src:
+    local('Roboto Black italic'),
+    local('Roboto-Blackitalic'),
+    url('/roboto-latin-900italic.1c1ce47b.woff2') format('woff2'), 
+    url('/roboto-latin-900italic.44ad9f4e.woff') format('woff'); /* Modern Browsers */
+}
+
+
+
+/*# sourceMappingURL=/main.css.map */
