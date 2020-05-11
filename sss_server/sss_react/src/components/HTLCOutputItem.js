@@ -3,6 +3,7 @@ import { Modal, Input, Button, Tooltip } from 'antd';
 import { InfoCircleOutlined, QrcodeOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 
+var QRCode = require('qrcode.react');
 
 export default class HTLCOutputItem extends Component {
   constructor(props) {
@@ -18,10 +19,17 @@ export default class HTLCOutputItem extends Component {
     })
   }
 
+  showQRModal = () => {
+    this.setState({
+      qrModalVisible: true,
+    })
+  }
+
   handleExit = e => {
     console.log(e);
     this.setState({
       visible: false,
+      qrModalVisible: false,
     })
   }
 
@@ -49,13 +57,28 @@ export default class HTLCOutputItem extends Component {
           disabled={this.props.disable}
           style={textBox}
           prefix={
-            <Tooltip title="Extra information">
-              <div>
+            <Tooltip title="Show QR Code">
+              <div onClick={this.showQRModal}>
                 <QrcodeOutlined style={{ color: 'rgba(0,0,0,.45)' }} />
               </div>
             </Tooltip>
-          }/>
-
+          }
+        />
+        <Modal
+          title={"P2SH Address"}
+          visible={this.state.qrModalVisible}
+          onCancel={this.handleExit}
+          footer={[
+            <Button key="back" onClick={this.handleExit} type="primary">
+              OK
+            </Button>,
+          ]}
+        >
+          <div style={{width: "100%",
+              textAlign: "center"}}>
+            <QRCode style={{display: "inline-block"}} value={this.props.value}/>
+          </div>
+        </Modal>
       </div>
     );
   }
