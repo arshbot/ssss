@@ -12,7 +12,7 @@ export default class HeaderText extends Component {
     return (
       <div style={header}>
         <div>
-          <h1> Simple Subswap Server </h1>
+          <h1>Simple Submarine Swap Server</h1>
           <label>This site exists to demo and debug submarine swaps</label>
         </div>
       </div>
