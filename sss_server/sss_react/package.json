@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev-wp": "webpack --watch --mode development ./src/index.js --output ./static/frontend/main.js",
     "dev": "parcel serve ./src/index.js --out-dir ./static/frontend --out-file main.js",
     "build": "parcel build ./src/index.js --out-dir ./static/frontend --out-file main.js"
   },
